@@ -1018,6 +1018,11 @@ class Jevix{
 						elseif (preg_match('/^(\.\.\/|\/)/ui', $value)) {
 							break;
 						}
+						// запрещаем ссылки на локальные файлы
+						elseif (preg_match('/^file:\/\//i',$value)){
+							$value='#';
+							break;
+						}
 						// Если нет указания протокола:
 						elseif (!preg_match('/^(http|https|ftp):\/\//ui', $value)) {
 							// Но адрес похож на домен
